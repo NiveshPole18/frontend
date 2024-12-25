@@ -14,7 +14,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     setError('');
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', { email, password }, { withCredentials: true });
+      const response = await axios.post('https://projectbackend-14ei.onrender.com/auth/login', { email, password }, { withCredentials: true });
       if (response.data.userId) {
         localStorage.setItem('userId', response.data.userId);
         setIsLoggedIn(true);
