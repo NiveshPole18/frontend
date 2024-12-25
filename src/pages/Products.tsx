@@ -53,7 +53,7 @@ const Products: React.FC = () => {
       }
       const userId = localStorage.getItem('userId');
       const response = await axios.post(
-        'http://localhost:5000/cart/addtocart',
+        'https://projectbackend-14ei.onrender.com/cart/addtocart',
         { userId, productId, quantity: 1 },
         { withCredentials: true }
       );
