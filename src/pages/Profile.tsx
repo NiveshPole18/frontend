@@ -36,7 +36,7 @@ const Profile: React.FC = () => {
       if (!orderId) {
         throw new Error('Order ID not found. Please place an order first.');
       }
-      const response = await axios.get(`http://localhost:5000/orders/order/${orderId}`, { withCredentials: true });
+      const response = await axios.get(`https://projectbackend-14ei.onrender.com/orders/order/${orderId}`, { withCredentials: true });
       console.log('API Response:', response.data); // For debugging
       if (response.data.success) {
         setOrders([response.data.order]);
