@@ -42,14 +42,14 @@ const Cart: React.FC = () => {
       if (!userId) {
         throw new Error('User ID not found. Please log in again.');
       }
-      const response = await axios.post('http://localhost:5000/cart/get-cart', { userId }, { withCredentials: true });
+      const response = await axios.post('https://projectbackend-14ei.onrender.com/cart/get-cart', { userId }, { withCredentials: true });
       console.log('Cart response:', response.data);
       if (response.data.success) {
         if (!response.data.cart || !response.data.cart.productsInCart) {
           setCartItems([]);
         } else {
           const itemsWithDetails = await Promise.all(response.data.cart.productsInCart.map(async (item: CartItem) => {
-            const productResponse = await axios.get(`http://localhost:5000/cart/product/${item.productId}`);
+            const productResponse = await axios.get(`https://projectbackend-14ei.onrender.com/cart/product/${item.productId}`);
             return { ...item, product: productResponse.data.product };
           }));
           console.log('Cart items with details:', itemsWithDetails);
@@ -69,7 +69,7 @@ const Cart: React.FC = () => {
   const updateQuantity = async (productId: string, newQuantity: number) => {
     try {
       const userId = localStorage.getItem('userId');
-      await axios.put('http://localhost:5000/cart/update-quantity', 
+      await axios.put('https://projectbackend-14ei.onrender.com/cart/update-quantity', 
         { userId, productId, productQty: newQuantity },
         { withCredentials: true }
       );
@@ -83,7 +83,7 @@ const Cart: React.FC = () => {
   const removeItem = async (productId: string) => {
     try {
       const userId = localStorage.getItem('userId');
-      await axios.post('http://localhost:5000/cart/delete-items', 
+      await axios.post('https://projectbackend-14ei.onrender.com/cart/delete-items', 
         { userId, productId },
         { withCredentials: true }
       );
@@ -129,7 +129,7 @@ const Cart: React.FC = () => {
 
       console.log('Sending order data:', orderData);
 
-      const response = await axios.post('http://localhost:5000/cart/place-order', orderData, { withCredentials: true });
+      const response = await axios.post('https://projectbackend-14ei.onrender.com/cart/place-order', orderData, { withCredentials: true });
 
       console.log('Order response:', response.data);
 
