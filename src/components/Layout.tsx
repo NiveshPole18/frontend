@@ -16,7 +16,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/auth/logout', {}, { withCredentials: true });
+      await axios.post('https://projectbackend-14ei.onrender.com/auth/logout', {}, { withCredentials: true });
       localStorage.removeItem('userId');
       setIsLoggedIn(false);
       navigate('/');
