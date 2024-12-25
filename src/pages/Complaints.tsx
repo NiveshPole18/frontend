@@ -32,7 +32,7 @@ const Complaints: React.FC = () => {
     setSubmitMessage(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/complaints/post-complaints', formData);
+      const response = await axios.post('https://projectbackend-14ei.onrender.com/complaints/post-complaints', formData);
       if (response.data.success) {
         setSubmitMessage('Complaint registered successfully. Check your email for confirmation.');
         setFormData({
