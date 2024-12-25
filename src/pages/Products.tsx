@@ -25,7 +25,7 @@ const Products: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/get-product');
+        const response = await axios.get('https://projectbackend-14ei.onrender.com/get-product');
         if (response.data.success) {
           let filteredProducts = response.data.products;
           if (category) {
